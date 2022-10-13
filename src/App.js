@@ -13,10 +13,21 @@ function App() {
     // console.log(e.target.email.value, e.target.password.value);
     console.log(email, password);
   };
+
+  const handleEmailChange = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div className="App">
       <form onSubmit={handleRegister}>
-        <input type="email" name="email" id="email" placeholder="email" />
+        <input
+          onChange={handleEmailChange}
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email"
+        />
         <br />
         <input
           type="password"
