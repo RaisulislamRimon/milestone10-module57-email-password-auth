@@ -16,7 +16,7 @@ const Form = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       <form onSubmit={handleRegister}>
         <input
           onBlur={handleEmailBlur}
