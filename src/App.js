@@ -8,7 +8,10 @@ function App() {
   const auth = getAuth(app);
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(e);
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    // console.log(e.target.email.value, e.target.password.value);
+    console.log(email, password);
   };
   return (
     <div className="App">
