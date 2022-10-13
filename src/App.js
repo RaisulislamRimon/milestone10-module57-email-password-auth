@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import firebaseConfig from "./firebaseConfig/firebaseConfig";
 
 function App() {
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={handleRegister}>
+        <input type="email" name="email" id="email" placeholder="email" />
+        <br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+        />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
