@@ -18,6 +18,10 @@ function App() {
     console.log(e.target.value);
   };
 
+  const handlePasswordChange = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div className="App">
       <form onSubmit={handleRegister}>
@@ -30,6 +34,7 @@ function App() {
         />
         <br />
         <input
+          onChange={handlePasswordChange}
           type="password"
           name="password"
           id="password"
