@@ -10,8 +10,11 @@ const RegisterReactBootstrap = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    setSuccess(false);
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
     // console.log(e.target.name, e.target.name.value);
     // console.log(name, password);
 
@@ -38,6 +41,7 @@ const RegisterReactBootstrap = () => {
         const user = userCredential.user;
         console.log(user);
         setSuccess(true);
+        form.reset();
       })
       .catch((error) => {
         const errorCode = error.code;
