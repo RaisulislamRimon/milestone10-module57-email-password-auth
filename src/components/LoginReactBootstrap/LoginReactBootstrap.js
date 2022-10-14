@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import {
   getAuth,
-  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { Link } from "react-router-dom";
@@ -60,13 +60,29 @@ const LoginReactBootstrap = () => {
   const handleEmailBlur = (e) => {
     const email = e.target.value;
     setUserEmail(email);
-    console.log("email", email);
-    console.log("userEmail: ", userEmail);
+    // console.log("email", email);
+    // console.log("userEmail: ", userEmail);
   };
 
   const handleForgetPassword = () => {
-    console.log("Forget Password");
-    // sendPasswordResetEmail(auth, email)
+    // console.log("Forget Password");
+    if (!userEmail) {
+      alert("Please enter your email");
+      return;
+    }
+    sendPasswordResetEmail(auth, userEmail)
+      .then(() => {
+        // Password reset email sent!
+        // ..
+        alert("Password reset email sent!");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+        console.log(errorMessage);
+        setPasswordError(errorCode);
+      });
   };
 
   return (
