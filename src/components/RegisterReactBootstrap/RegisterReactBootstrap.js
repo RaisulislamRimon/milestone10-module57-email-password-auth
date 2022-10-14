@@ -59,7 +59,7 @@ const RegisterReactBootstrap = () => {
 
   const verifyEmail = () => {
     sendEmailVerification(auth.currentUser).then(() => {
-      console.log("Please verify your email");
+      alert("Please verify your email");
     });
   };
 
