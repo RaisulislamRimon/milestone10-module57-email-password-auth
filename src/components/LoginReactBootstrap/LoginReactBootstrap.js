@@ -12,6 +12,7 @@ const LoginReactBootstrap = () => {
 
   const [success, setSuccess] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,6 +57,13 @@ const LoginReactBootstrap = () => {
       });
   };
 
+  const handleEmailBlur = (e) => {
+    const email = e.target.value;
+    setUserEmail(email);
+    console.log("email", email);
+    console.log("userEmail: ", userEmail);
+  };
+
   const handleForgetPassword = () => {
     console.log("Forget Password");
     // sendPasswordResetEmail(auth, email)
@@ -68,6 +76,7 @@ const LoginReactBootstrap = () => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
+            onBlur={handleEmailBlur}
             type="email"
             name="email"
             placeholder="Enter email"
