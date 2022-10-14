@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const RegisterReactBootstrap = () => {
   const auth = getAuth();
+
+  const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,6 +13,24 @@ const RegisterReactBootstrap = () => {
     const password = e.target.password.value;
     // console.log(e.target.name, e.target.name.value);
     // console.log(name, password);
+
+    if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+      setPasswordError("Password must be at least two uppercase letters");
+      return;
+    }
+
+    if (password.length < 6) {
+      setPasswordError("Password must be at least 6 characters");
+      return;
+    }
+
+    if (!/(?=.*[!@#$&*])/.test(password)) {
+      setPasswordError("Password must contain special characters");
+      return;
+    }
+
+    setPasswordError("");
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -46,7 +66,7 @@ const RegisterReactBootstrap = () => {
             required
           />
         </Form.Group>
-
+        <p className="text-danger">{passwordError}</p>
         <Button variant="primary" type="submit">
           Register
         </Button>
