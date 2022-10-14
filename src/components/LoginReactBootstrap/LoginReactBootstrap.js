@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 
-const RegisterReactBootstrap = () => {
+const LoginReactBootstrap = () => {
   const auth = getAuth();
 
   const [success, setSuccess] = useState(false);
@@ -53,7 +53,7 @@ const RegisterReactBootstrap = () => {
   };
   return (
     <div className="w-50 mx-auto">
-      <h3 className="text-primary text-center">Please Register</h3>
+      <h2 className="text-center text-primary">Login React Bootstrap</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -76,13 +76,12 @@ const RegisterReactBootstrap = () => {
         </Form.Group>
         <p className="text-danger">{passwordError}</p>
         {success && <p className="text-success">User created successfully.</p>}
-
         <div className="text-center">
           <Button variant="primary" type="submit">
-            Register
+            Login
           </Button>
           <p>
-            Already a member? <Link to="/login">Login</Link>
+            Not a member? <Link to="/register">Register</Link>
           </p>
         </div>
       </Form>
@@ -90,4 +89,4 @@ const RegisterReactBootstrap = () => {
   );
 };
 
-export default RegisterReactBootstrap;
+export default LoginReactBootstrap;

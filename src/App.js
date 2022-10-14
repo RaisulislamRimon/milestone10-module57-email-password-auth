@@ -6,6 +6,7 @@ import RegisterReactBootstrap from "./components/RegisterReactBootstrap/Register
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
 import Main from "./layouts/Main";
+import LoginReactBootstrap from "./components/LoginReactBootstrap/LoginReactBootstrap";
 
 function App() {
   const app = initializeApp(firebaseConfig);
@@ -21,7 +22,7 @@ function App() {
         },
         {
           path: "/login",
-          element: <RegisterReactBootstrap />,
+          element: <LoginReactBootstrap />,
         },
         {
           path: "/register",
