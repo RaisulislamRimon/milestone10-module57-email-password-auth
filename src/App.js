@@ -14,10 +14,13 @@ function App() {
     {
       path: "/",
       element: <Main />,
-      errorElement: <NotFound />,
       children: [
         {
           path: "/",
+          element: <RegisterReactBootstrap />,
+        },
+        {
+          path: "/login",
           element: <RegisterReactBootstrap />,
         },
         {
@@ -28,7 +31,12 @@ function App() {
           path: "/form",
           element: <Form />,
         },
+        {
+          path: "*",
+          element: <NotFound />,
+        },
       ],
+      errorElement: <NotFound />,
     },
   ]);
 
