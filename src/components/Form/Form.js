@@ -16,7 +16,7 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <div className="w-50 mx-auto">
       <form onSubmit={handleRegister}>
         <input
           onBlur={handleEmailBlur}

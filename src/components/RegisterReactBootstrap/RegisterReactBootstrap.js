@@ -10,7 +10,7 @@ const RegisterReactBootstrap = () => {
     console.log(name, password);
   };
   return (
-    <div className="container w-50">
+    <div className="w-50 mx-auto">
       <h3 className="text-primary text-center">Please Register</h3>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
