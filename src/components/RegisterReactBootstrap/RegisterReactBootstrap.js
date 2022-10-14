@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { Link } from "react-router-dom";
 
 const RegisterReactBootstrap = () => {
@@ -43,6 +47,7 @@ const RegisterReactBootstrap = () => {
         console.log(user);
         setSuccess(true);
         form.reset();
+        verifyEmail();
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -51,6 +56,13 @@ const RegisterReactBootstrap = () => {
         setPasswordError(errorCode);
       });
   };
+
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log("Please verify your email");
+    });
+  };
+
   return (
     <div className="w-50 mx-auto">
       <h3 className="text-primary text-center">Please Register</h3>

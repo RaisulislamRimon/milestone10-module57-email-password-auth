@@ -79,7 +79,9 @@ const LoginReactBootstrap = () => {
           />
         </Form.Group>
         <p className="text-danger">{passwordError}</p>
-        {success && <p className="text-success">User created successfully.</p>}
+        {success && (
+          <p className="text-success">User logged in successfully.</p>
+        )}
         <div className="text-center">
           <Button variant="primary" type="submit">
             Login
