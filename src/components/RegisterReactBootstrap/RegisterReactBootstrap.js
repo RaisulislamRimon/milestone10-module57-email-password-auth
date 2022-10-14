@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const RegisterReactBootstrap = () => {
   const auth = getAuth();
 
+  const [success, setSuccess] = useState(false);
   const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = (e) => {
@@ -36,6 +37,7 @@ const RegisterReactBootstrap = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        setSuccess(true);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -68,6 +70,7 @@ const RegisterReactBootstrap = () => {
           />
         </Form.Group>
         <p className="text-danger">{passwordError}</p>
+        {success && <p className="text-success">User created successfully.</p>}
         <Button variant="primary" type="submit">
           Register
         </Button>
