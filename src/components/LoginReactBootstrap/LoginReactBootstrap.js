@@ -55,6 +55,12 @@ const LoginReactBootstrap = () => {
         setPasswordError(errorCode);
       });
   };
+
+  const handleForgetPassword = () => {
+    console.log("Forget Password");
+    // sendPasswordResetEmail(auth, email)
+  };
+
   return (
     <div className="w-50 mx-auto">
       <h2 className="text-center text-primary">Login React Bootstrap</h2>
@@ -88,6 +94,16 @@ const LoginReactBootstrap = () => {
           </Button>
           <p>
             Not a member? <Link to="/register">Register</Link>
+          </p>
+          <p>
+            Forget Password ?{" "}
+            <button
+              onClick={handleForgetPassword}
+              type="button"
+              className="btn btn-link"
+            >
+              Please Reset
+            </button>
           </p>
         </div>
       </Form>
