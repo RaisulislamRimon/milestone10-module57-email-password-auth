@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { Link } from "react-router-dom";
 
 const LoginReactBootstrap = () => {
@@ -36,7 +40,7 @@ const LoginReactBootstrap = () => {
 
     setPasswordError("");
 
-    createUserWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
