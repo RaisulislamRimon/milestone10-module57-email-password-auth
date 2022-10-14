@@ -1,13 +1,27 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const RegisterReactBootstrap = () => {
+  const auth = getAuth();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
     // console.log(e.target.name, e.target.name.value);
-    console.log(name, password);
+    // console.log(name, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
   };
   return (
     <div className="w-50 mx-auto">
@@ -15,7 +29,7 @@ const RegisterReactBootstrap = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" name="name" placeholder="Enter email" />
+          <Form.Control type="email" name="email" placeholder="Enter email" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
