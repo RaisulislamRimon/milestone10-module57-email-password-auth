@@ -15,12 +15,12 @@ const RegisterReactBootstrap = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // ...
+        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
+        console.log(errorCode, errorMessage);
       });
   };
   return (
@@ -29,7 +29,12 @@ const RegisterReactBootstrap = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" name="email" placeholder="Enter email" />
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -38,6 +43,7 @@ const RegisterReactBootstrap = () => {
             type="password"
             name="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
 
